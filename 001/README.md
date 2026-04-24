@@ -88,7 +88,7 @@ So instead of just answering a question, an agent could, for example, look up in
 To make this concrete, here is the difference between a plain LLM call and an agent handling the same question:
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph LLM
         P1[User prompt] --> P2[LLM]
         P2 --> P3[Response]
