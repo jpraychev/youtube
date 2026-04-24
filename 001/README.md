@@ -93,7 +93,10 @@ flowchart TD
         P1[User prompt] --> P2[LLM]
         P2 --> P3[Response]
     end
+```
 
+```mermaid
+flowchart TD
     subgraph Agent
         A1[User prompt] --> A2[Plan]
         A2 --> A3[Call tools]
