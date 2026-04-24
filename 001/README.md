@@ -83,3 +83,72 @@ flowchart RL
 
 So instead of just answering a question, an agent could, for example, look up information, call an API, or perform some task before responding.
 
+### LLM vs Agent
+
+To make this concrete, here is the difference between a plain LLM call and an agent handling the same question:
+
+```mermaid
+flowchart LR
+    subgraph Plain LLM
+        P1[User prompt] --> P2[LLM]
+        P2 --> P3[Response]
+    end
+
+    subgraph Agent
+        A1[User prompt] --> A2[Plan]
+        A2 --> A3[Call tools]
+        A3 --> A4[Observe result]
+        A4 --> A5{Done?}
+        A5 -->|No| A2
+        A5 -->|Yes| A6[Final response]
+    end
+```
+
+### The agent reasoning loop (ReAct)
+
+Agents don't just call a tool once and stop. They follow a continuous loop known as the **ReAct** pattern — short for **Reason, Act, Observe**:
+
+1. **Reason** — the LLM looks at the current context and decides what to do next
+2. **Act** — it calls a tool or takes an action
+3. **Observe** — the result is fed back into the context
+4. The loop repeats until the agent decides it has enough information to give a final answer
+
+```mermaid
+flowchart TD
+    Start([User prompt]) --> Reason[Reason: what should I do next?]
+    Reason --> Act[Act: call a tool]
+    Act --> Observe[Observe: get tool result]
+    Observe --> Check{Enough info?}
+    Check -->|No| Reason
+    Check -->|Yes| Answer([Final response to user])
+```
+
+### Memory
+
+Agents can also maintain memory across interactions, which comes in two forms:
+
+- **Short-term memory** — the current conversation stored in the context window, available during a single session
+- **Long-term memory** — an external store (e.g. a vector database) the agent can query to recall information from past sessions
+
+```mermaid
+flowchart LR
+    Agent[AI Agent] --> STM["Short-term memory\n(context window)"]
+    Agent --> LTM["Long-term memory\n(vector DB / external store)"]
+    STM -->|current session context| Agent
+    LTM -->|retrieved past knowledge| Agent
+```
+
+### Concrete example
+
+Let's say a user asks: *"What is the weather in Paris today?"*
+
+A plain LLM would either make something up or say it doesn't have live data. An agent handles it like this:
+
+```mermaid
+flowchart TD
+    U([User: What is the weather in Paris today?]) --> R[Reason: I need live weather data]
+    R --> T[Call weather API tool with city=Paris]
+    T --> O[Observe: 18°C, partly cloudy]
+    O --> F([Response: It is 18°C and partly cloudy in Paris today])
+```
+
