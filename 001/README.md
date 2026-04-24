@@ -1,11 +1,10 @@
 # Create your first AI agent for free
 
 ## Table of content
-1. Intro
+1. [Intro](#intro)
 2. [What are large language models (LLM)?](#large-language-models-llms)
 3. [What are AI Agents and how they fit LLMs?](#ai-agents)
-4. Building an AI agent.
-5. 
+4. [Building an AI agent](#building-an-ai-agent)
 
 ## Intro
 What's up guys, Jordan here, welcome to my channel where we will explore all things related to AI - 
@@ -155,3 +154,4 @@ flowchart TD
     O --> F([Response: It is 18°C and partly cloudy in Paris today])
 ```
 
+## Building an AI agent
