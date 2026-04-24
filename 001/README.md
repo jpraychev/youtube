@@ -70,16 +70,13 @@ flowchart LR
     V --> TP[Tool picker]
     TP --> OBS[Observations]
 
-    %% Memory block
     OBS --> MEM[Memory]
     MEM --> ST[(Short-term Context)]
     MEM --> LT[(Long-term Vector DB)]
 
-    %% Reasoning
     OBS --> LLM[Reasoning (LLM)]
     MEM --> LLM
 
-    %% Actions & Tools loop
     LLM --> ACT[Actions]
     ACT --> TOOLS[Tools]
     TOOLS --> WS[Web Search]
@@ -87,7 +84,6 @@ flowchart LR
     TOOLS --> API[External API]
     TOOLS --> OBS
 
-    %% Final output
     LLM --> OUT[Output]
 ```
 
