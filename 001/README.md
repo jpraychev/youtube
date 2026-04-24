@@ -142,16 +142,64 @@ flowchart
 
 ### Concrete example
 
-Let's say a user asks: *"What is the weather in Paris today?"*
+Let's say a user asks: *"What is the weather in London today?"*
 
 A plain LLM would either make something up or say it doesn't have live data. An agent handles it like this:
 
 ```mermaid
 flowchart TD
-    U([User: What is the weather in Paris today?]) --> R[Reason: I need live weather data]
-    R --> T[Call weather API tool with city=Paris]
+    U([User: What is the weather in London today?]) --> R[Reason: I need live weather data]
+    R --> T[Call weather API tool with city=London]
     T --> O[Observe: 18°C, partly cloudy]
-    O --> F([Response: It is 18°C and partly cloudy in Paris today])
+    O --> F([Response: It is 18°C and partly cloudy in London today])
 ```
 
 ## Building an AI agent
+
+The time has arrived to build our first AI agent. We will be using Google's ADK and Python to complete this task. Make sure you have the following installed:
+
+* Python >= 3.10
+* pip - to install Python packages
+
+1. Install google's ADK in a virtual environment
+
+```
+python -m venv venv
+source venv/bin/activate
+pip install google-adk
+```
+
+2. Create the project
+
+```
+adk create my_first_agent
+```
+
+3. Explore the project you've just created
+
+When exploring the project, you will see a single file called agent.py which hold the source code
+for your AI agent. Looking at the code its not much but it is a starting point.
+
+```
+my_first_agent
+├── __init__.py
+└── agent.py
+
+# agent.py
+root_agent = Agent(
+    model='gemini-2.5-flash',
+    name='root_agent',
+    description='A helpful assistant for user questions.',
+    instruction='Answer user questions to the best of your knowledge',
+)
+```
+
+4. Start the agent
+
+```
+adk web
+```
+
+Once you start the agent you should navigate to `http://127.0.0.1:8000` and see the following welcome screen.
+
+![AI Agent Web](/001/static/ai-agent-web.png "AI Agent Web")
