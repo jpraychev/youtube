@@ -88,7 +88,7 @@ So instead of just answering a question, an agent could, for example, look up in
 To make this concrete, here is the difference between a plain LLM call and an agent handling the same question:
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph Plain LLM
         P1[User prompt] --> P2[LLM]
         P2 --> P3[Response]
@@ -131,7 +131,7 @@ Agents can also maintain memory across interactions, which comes in two forms:
 - **Long-term memory** — an external store (e.g. a vector database) the agent can query to recall information from past sessions
 
 ```mermaid
-flowchart LR
+flowchart 
     Agent[AI Agent] --> STM["Short-term memory\n(context window)"]
     Agent --> LTM["Long-term memory\n(vector DB / external store)"]
     STM -->|current session context| Agent
