@@ -89,8 +89,10 @@ To make this concrete, here is the difference between a plain LLM call and an ag
 
 ```mermaid
 flowchart LR
-    P1[User prompt] --> P2[LLM]
-    P2 --> P3[Response]
+    subgraph LLM
+        P1[User prompt] --> P2[LLM]
+        P2 --> P3[Response]
+    end
 
     A1[User prompt] --> A2[Plan]
     A2 --> A3[Call tools]
