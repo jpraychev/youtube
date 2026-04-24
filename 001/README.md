@@ -2,8 +2,8 @@
 
 ## Table of content
 1. Intro
-2. What are large language models (LLM)?
-3. What are AI Agents and how they fit LLMs?
+2. [What are large language models (LLM)?](#large-language-models-llms)
+3. [What are AI Agents and how they fit LLMs?](#ai-agents)
 4. Building an AI agent.
 5. 
 
@@ -54,12 +54,42 @@ graph LR
     A1["User: What is the"] --> |inference | B1["LLM: meaning of life"]
 ```
 
+Note: LLMs became widespread after the introduction of `transformer` [architecture](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) back in 2016.
+
+## AI Agents
+Now that we have an idea of what LLMs are, let’s take it one step further and talk about agents.
+
+An agent is essentially a system that uses a language model, but adds a bit more structure and logic around it. Instead of just responding to a single prompt, an agent can take actions, make decisions, and even use tools.
+
+Think of it like this:
+A language model is the brain, and the agent is the whole system — the brain plus memory, tools, and decision-making.
+
 ```mermaid
-graph LR
-    A[What is the] --> B[LLM]
-    B --> C[meaning]
-    C --> D[What is the meaning]
+flowchart LR
+    UI[User input] --> V[Validations]
+    V --> TP[Tool picker]
+    TP --> OBS[Observations]
+
+    %% Memory block
+    OBS --> MEM[Memory]
+    MEM --> ST[(Short-term Context)]
+    MEM --> LT[(Long-term Vector DB)]
+
+    %% Reasoning
+    OBS --> LLM[Reasoning (LLM)]
+    MEM --> LLM
+
+    %% Actions & Tools loop
+    LLM --> ACT[Actions]
+    ACT --> TOOLS[Tools]
+    TOOLS --> WS[Web Search]
+    TOOLS --> CODE[{...} Code]
+    TOOLS --> API[External API]
+    TOOLS --> OBS
+
+    %% Final output
+    LLM --> OUT[Output]
 ```
 
-Note: LLMs became widespread after the introduction of `transformer` [architecture](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) back in 2016.
+So instead of just answering a question, an agent could, for example, look up information, call an API, or perform some task before responding.
 
