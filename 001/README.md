@@ -66,25 +66,15 @@ A language model is the brain, and the agent is the whole system — the brain p
 
 ```mermaid
 flowchart LR
-    UI[User input] --> V[Validations]
-    V --> TP[Tool picker]
-    TP --> OBS[Observations]
+    User[User] --> Agent[Agent]
+    Agent --> Tools
 
-    OBS --> MEM[Memory]
-    MEM --> ST[(Short-term Context)]
-    MEM --> LT[(Long-term Vector DB)]
-
-    OBS --> LLM[Reasoning (LLM)]
-    MEM --> LLM
-
-    LLM --> ACT[Actions]
-    ACT --> TOOLS[Tools]
-    TOOLS --> WS[Web Search]
-    TOOLS --> CODE[{...} Code]
-    TOOLS --> API[External API]
-    TOOLS --> OBS
-
-    LLM --> OUT[Output]
+    subgraph Tools["  Tools  "]
+        direction LR
+        T1["External APIs"]
+        T2["{} Code"]
+        T3["Web search"]
+    end
 ```
 
 So instead of just answering a question, an agent could, for example, look up information, call an API, or perform some task before responding.
