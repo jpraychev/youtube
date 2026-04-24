@@ -89,19 +89,15 @@ To make this concrete, here is the difference between a plain LLM call and an ag
 
 ```mermaid
 flowchart TD
-    subgraph Plain LLM
-        P1[User prompt] --> P2[LLM]
-        P2 --> P3[Response]
-    end
+    P1[User prompt] --> P2[LLM]
+    P2 --> P3[Response]
 
-    subgraph Agent
-        A1[User prompt] --> A2[Plan]
-        A2 --> A3[Call tools]
-        A3 --> A4[Observe result]
-        A4 --> A5{Done?}
-        A5 -->|No| A2
-        A5 -->|Yes| A6[Final response]
-    end
+    A1[User prompt] --> A2[Plan]
+    A2 --> A3[Call tools]
+    A3 --> A4[Observe result]
+    A4 --> A5{Done?}
+    A5 -->|No| A2
+    A5 -->|Yes| A6[Final response]
 ```
 
 ### The agent reasoning loop (ReAct)
