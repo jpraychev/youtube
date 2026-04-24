@@ -117,7 +117,7 @@ Agents don't just call a tool once and stop. They follow a continuous loop known
 4. The loop repeats until the agent decides it has enough information to give a final answer
 
 ```mermaid
-flowchart TD
+flowchart LR
     Start([User prompt]) --> Reason[Reason: what should I do next?]
     Reason --> Act[Act: call a tool]
     Act --> Observe[Observe: get tool result]
