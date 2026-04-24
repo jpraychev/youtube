@@ -20,11 +20,6 @@ that is what LLM actually does - you give it a sentence or even a single word an
 probabilities, the model predicts what the next word should be. Thats pretty much what they do.
 The interesting question would be - how do they do it?
 
-```mermaid
-graph LR
-    A["What is the weather today"] -->|training| B[LLM]
-```
-
 Let say that you start with the sentence `What is the...`. Based on the data that the model had been
 trained with, it will pick a word based on certain set of probabilities, for example.
 
@@ -42,7 +37,7 @@ trained with, it will pick a word based on certain set of probabilities, for exa
 | value      | 1–3%                |
 
 
-In other words, the model don't know what you are currently trying to say, so it will pick up a word
+In other words, the model don't know what you are currently trying to say, so it will pick up a word (a process called inference)
 that best matches the `context` that it is given. Unfortunatelly, models do not work with your sentences
 and words directly and it has to convert them to so called `tokens` first.
 
@@ -55,10 +50,16 @@ These tokens are then fed into a neural network which based on its settings or w
 ```mermaid
 graph LR
     A[What is the meaning of life] --> |training | B[LLM]
-    
+
     A1["User: What is the"] --> |inference | B1["LLM: meaning of life"]
 ```
 
+```mermaid
+graph LR
+    A[What is the] --> B[LLM]
+    B --> C[meaning]
+    C --> D[What is the meaning]
+```
 
 Note: LLMs became widespread after the introduction of `transformer` [architecture](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) back in 2016.
 
