@@ -94,12 +94,14 @@ flowchart TD
         P2 --> P3[Response]
     end
 
-    A1[User prompt] --> A2[Plan]
-    A2 --> A3[Call tools]
-    A3 --> A4[Observe result]
-    A4 --> A5{Done?}
-    A5 -->|No| A2
-    A5 -->|Yes| A6[Final response]
+    subgraph Agent
+        A1[User prompt] --> A2[Plan]
+        A2 --> A3[Call tools]
+        A3 --> A4[Observe result]
+        A4 --> A5{Done?}
+        A5 -->|No| A2
+        A5 -->|Yes| A6[Final response]
+    end
 ```
 
 ### The agent reasoning loop (ReAct)
