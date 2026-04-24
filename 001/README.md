@@ -1,0 +1,64 @@
+# Create your first AI agent for free
+
+## Table of content
+1. Intro
+2. What are large language models (LLM)?
+3. What are AI Agents and how they fit LLMs?
+4. Building an AI agent.
+5. 
+
+## Intro
+What's up guys, Jordan here, welcome to my channel where we will explore all things related to AI - 
+starting from the very basics to hands-on tutorials. In todays video we will dive into Large Language Models
+or LLMs for short and how AI agents interact with them. Then, we will build an AI agent from scratch
+using google AI development kit or ADK for short.
+
+## Large language models (LLMs)
+LLMs are computer systems trained on huge amount of training data giving them the ability to mimic
+human intelligence. You can think of them like super-powered autocompletes, because at the end
+that is what LLM actually does - you give it a sentence or even a single word and based on certain
+probabilities, the model predicts what the next word should be. Thats pretty much what they do.
+The interesting question would be - how do they do it?
+
+```mermaid
+graph LR
+    A["What is the weather today"] -->|training| B[LLM]
+```
+
+Let say that you start with the sentence `What is the...`. Based on the data that the model had been
+trained with, it will pick a word based on certain set of probabilities, for example.
+
+| Next word  | Approx. probability |
+| ---------- | ------------------- |
+| meaning    | 7–10%               |
+| best       | 5–8%                |
+| difference | 4–7%                |
+| purpose    | 3–6%                |
+| capital    | 3–6%                |
+| reason     | 2–5%                |
+| point      | 2–4%                |
+| name       | 2–4%                |
+| definition | 2–4%                |
+| value      | 1–3%                |
+
+
+In other words, the model don't know what you are currently trying to say, so it will pick up a word
+that best matches the `context` that it is given. Unfortunatelly, models do not work with your sentences
+and words directly and it has to convert them to so called `tokens` first.
+
+The following app called [tiktokenizer](https://tiktokenizer.vercel.app/?model=codellama%2FCodeLlama-70b-hf)
+can give you an idea how each model translates words into tokens. In this particular case for `Llama 70b model`
+the sentence `What is the` is mapped to `1724, 338, 278` numbers or tokens.
+
+These tokens are then fed into a neural network which based on its settings or weights will give you one of the words depicted above (or many others depending on training data sets). LLMs don’t really know when to stop—they just keep predicting the next word until they eventually predict a special ‘end’ token or hit a predefined limit.
+
+```mermaid
+graph LR
+    A[What is the meaning of life] --> |training | B[LLM]
+    
+    A1["User: What is the"] --> |inference | B1["LLM: meaning of life"]
+```
+
+
+Note: LLMs became widespread after the introduction of `transformer` [architecture](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) back in 2016.
+
