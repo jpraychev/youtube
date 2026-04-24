@@ -65,7 +65,7 @@ Think of it like this:
 A language model is the brain, and the agent is the whole system — the brain plus memory, tools, and decision-making.
 
 ```mermaid
-flowchart LR
+flowchart RL
     User[User] -->|prompt| Agent[AI Agent]
     Agent -->|1. call tools| Tools
 
