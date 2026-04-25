@@ -6,11 +6,6 @@
 3. [What are AI Agents and how they fit LLMs?](#ai-agents)
 4. [Building an AI agent](#building-an-ai-agent)
 
-## Intro
-What's up guys, Jordan here, welcome to my channel where we will explore all things related to AI - 
-starting from the very basics to hands-on tutorials. In todays video we will dive into Large Language Models
-or LLMs for short and how AI agents interact with them. Then, we will build an AI agent from scratch
-using google AI development kit or ADK for short.
 
 ## Large language models (LLMs)
 LLMs are computer systems trained on huge amount of training data giving them the ability to mimic
@@ -160,12 +155,18 @@ The time has arrived to build our first AI agent. We will be using Google's ADK 
 
 * Python >= 3.10
 * pip - to install Python packages
+* Google AI Studio API key
 
 1. Install google's ADK in a virtual environment
 
 ```
 python -m venv venv
-source venv/bin/activate
+
+# Activate (each new terminal)
+# macOS/Linux: source .venv/bin/activate
+# Windows CMD: .venv\Scripts\activate.bat
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+
 pip install google-adk
 ```
 
